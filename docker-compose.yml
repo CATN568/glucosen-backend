@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: glucosen-postgres
+    environment:
+      POSTGRES_USER: glucosen_user
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: glucosen_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - glucosen-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U glucosen_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: glucosen-app
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: glucosen_db
+      DB_USER: glucosen_user
+      DB_PASSWORD: your_secure_password
+      PORT: 3000
+      NODE_ENV: production
+      JWT_SECRET: your_super_secret_jwt_key_change_in_production
+      JWT_EXPIRE: 7d
+      CORS_ORIGIN: http://localhost:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - glucosen-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  glucosen-network:
+    driver: bridge

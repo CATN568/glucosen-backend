@@ -1,0 +1,220 @@
+# Fichier d'exemples de requêtes API pour Glucosen Backend
+# À utiliser avec Postman, REST Client (VS Code) ou cURL
+
+### ==========================================
+### 1. AUTHENTIFICATION
+### ==========================================
+
+### 1.1 Register (Créer un compte)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "SecurePassword123",
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-01-15"
+}
+
+### 1.2 Login (Se connecter)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "SecurePassword123"
+}
+
+### 1.3 Get Profile (Obtenir le profil)
+GET http://localhost:3000/api/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 1.4 Update Profile (Mettre à jour le profil)
+PUT http://localhost:3000/api/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "firstName": "Jonathan",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-01-15"
+}
+
+### ==========================================
+### 2. GLUCOSE
+### ==========================================
+
+### 2.1 Create Glucose Reading (Créer une lecture)
+POST http://localhost:3000/api/glucose
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "glucoseLevel": 145,
+  "readingTime": "2026-03-29T10:30:00Z",
+  "unit": "mg/dL",
+  "notes": "Avant le petit-déjeuner"
+}
+
+### 2.2 Get All Glucose Readings (Obtenir toutes les lectures)
+GET http://localhost:3000/api/glucose?limit=30&offset=0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 2.3 Get Glucose by Date Range (Par période)
+GET http://localhost:3000/api/glucose/range?startDate=2026-03-01&endDate=2026-03-31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 2.4 Get Glucose Statistics (Statistiques)
+GET http://localhost:3000/api/glucose/statistics?days=30
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 2.5 Update Glucose Reading (Mettre à jour une lecture)
+PUT http://localhost:3000/api/glucose/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "glucoseLevel": 150,
+  "readingTime": "2026-03-29T10:30:00Z",
+  "notes": "Après le petit-déjeuner"
+}
+
+### 2.6 Delete Glucose Reading (Supprimer une lecture)
+DELETE http://localhost:3000/api/glucose/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ==========================================
+### 3. REPAS
+### ==========================================
+
+### 3.1 Create Meal (Créer un repas)
+POST http://localhost:3000/api/meals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "mealType": "breakfast",
+  "mealTime": "2026-03-29T08:00:00Z",
+  "description": "Oeufs brouillés, pain grillé et confiture",
+  "carbs": 45,
+  "protein": 15,
+  "fat": 12,
+  "calories": 350
+}
+
+### 3.2 Get All Meals (Obtenir tous les repas)
+GET http://localhost:3000/api/meals?limit=30&offset=0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 3.3 Get Meals by Date Range (Par période)
+GET http://localhost:3000/api/meals/range?startDate=2026-03-01&endDate=2026-03-31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 3.4 Update Meal (Mettre à jour un repas)
+PUT http://localhost:3000/api/meals/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "mealType": "breakfast",
+  "carbs": 50,
+  "protein": 18
+}
+
+### 3.5 Delete Meal (Supprimer un repas)
+DELETE http://localhost:3000/api/meals/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ==========================================
+### 4. INSULINE
+### ==========================================
+
+### 4.1 Create Insulin Log (Créer un journal d'insuline)
+POST http://localhost:3000/api/insulin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "insulinType": "Humalog",
+  "units": 10,
+  "administrationTime": "2026-03-29T08:00:00Z",
+  "notes": "Avant le petit-déjeuner"
+}
+
+### 4.2 Get All Insulin Logs (Obtenir tous les journaux)
+GET http://localhost:3000/api/insulin?limit=30&offset=0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 4.3 Get Insulin Logs by Date Range (Par période)
+GET http://localhost:3000/api/insulin/range?startDate=2026-03-01&endDate=2026-03-31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 4.4 Get Total Daily Insulin Units (Total quotidien)
+GET http://localhost:3000/api/insulin/daily-total?date=2026-03-29
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 4.5 Update Insulin Log (Mettre à jour un journal)
+PUT http://localhost:3000/api/insulin/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "units": 12,
+  "notes": "Dosage augmenté"
+}
+
+### 4.6 Delete Insulin Log (Supprimer un journal)
+DELETE http://localhost:3000/api/insulin/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ==========================================
+### 5. EXERCICE
+### ==========================================
+
+### 5.1 Create Exercise Log (Créer un journal d'exercice)
+POST http://localhost:3000/api/exercise
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "activityType": "running",
+  "durationMinutes": 30,
+  "intensity": "moderate",
+  "exerciseTime": "2026-03-29T17:00:00Z",
+  "caloriesBurned": 250,
+  "notes": "Course dans le parc"
+}
+
+### 5.2 Get All Exercise Logs (Obtenir tous les journaux)
+GET http://localhost:3000/api/exercise?limit=30&offset=0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 5.3 Get Exercise Logs by Date Range (Par période)
+GET http://localhost:3000/api/exercise/range?startDate=2026-03-01&endDate=2026-03-31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 5.4 Get Exercise Statistics (Statistiques)
+GET http://localhost:3000/api/exercise/statistics?days=30
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### 5.5 Update Exercise Log (Mettre à jour un journal)
+PUT http://localhost:3000/api/exercise/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "durationMinutes": 40,
+  "caloriesBurned": 280
+}
+
+### 5.6 Delete Exercise Log (Supprimer un journal)
+DELETE http://localhost:3000/api/exercise/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ==========================================
+### 6. HEALTH CHECK
+### ==========================================
+
+### 6.1 Server Health Check
+GET http://localhost:3000/health
