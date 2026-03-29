@@ -6,14 +6,29 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write .",
+    "validate": "npm run lint && npm run format"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CATN568/glucosen-backend.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "glucose",
+    "health",
+    "diabetes",
+    "tracking",
+    "api",
+    "rest",
+    "node",
+    "express",
+    "postgresql"
+  ],
+  "author": "CATN568",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -24,11 +39,17 @@
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
     "express": "^5.2.1",
     "helmet": "^8.1.0",
+    "jest": "^30.3.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
     "nodemon": "^3.1.14",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "prettier": "^3.8.1",
+    "supertest": "^7.2.2"
   }
 }
