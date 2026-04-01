@@ -55,7 +55,7 @@ DB_USER=glucosen_user
 DB_PASSWORD=your_secure_password
 
 # Server Configuration
-PORT=3000
+PORT=3001
 NODE_ENV=development
 
 # JWT Configuration
@@ -63,7 +63,7 @@ JWT_SECRET=your_super_secret_jwt_key_change_in_production
 JWT_EXPIRE=7d
 
 # CORS Configuration
-CORS_ORIGIN=http://localhost:3000,http://localhost:5173
+CORS_ORIGIN=http://localhost:3001,http://localhost:5173
 ```
 
 ### 4. Créer la base de données PostgreSQL
@@ -95,7 +95,7 @@ npm run dev
 npm start
 ```
 
-L'application sera disponible sur `http://localhost:3000`
+L'application sera disponible sur `http://localhost:3001`
 
 ## 📚 Documentation de l'API
 
@@ -124,11 +124,11 @@ POST /api/auth/register
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
-  "password": "securPassword123",
-  "firstName": "Jean",
-  "lastName": "Dupont",
-  "dateOfBirth": "1990-01-15"
+  "email": "tidjnjaay@gmail.com",
+  "password": "112211#Laftiet",
+  "firstName": "Cheikh-Ahmed-Tidiane",
+  "lastName": "Ndiaye",
+  "dateOfBirth": "1957-07-05"
 }
 ```
 
@@ -138,9 +138,9 @@ Content-Type: application/json
   "message": "User registered successfully",
   "user": {
     "id": 1,
-    "email": "user@example.com",
-    "firstName": "Jean",
-    "lastName": "Dupont"
+    "email": "tidjnjaay@gmail.com",
+    "firstName": "Cheikh-Ahmed-Tidiane",
+    "lastName": "Ndiaye"
   },
   "token": "eyJhbGciOiJIUzI1NiIs..."
 }
@@ -153,8 +153,8 @@ POST /api/auth/login
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
-  "password": "securPassword123"
+  "email": "tidjnjaay@gmail.com",
+  "password": "112211#Laftiet"
 }
 ```
 
@@ -164,9 +164,9 @@ Content-Type: application/json
   "message": "Login successful",
   "user": {
     "id": 1,
-    "email": "user@example.com",
-    "firstName": "Jean",
-    "lastName": "Dupont"
+    "email": "tidjnjaay@gmail.com",
+    "firstName": "Cheikh-Ahmed-Tidiane",
+    "lastName": "Ndiaye"
   },
   "token": "eyJhbGciOiJIUzI1NiIs..."
 }
@@ -184,10 +184,10 @@ Authorization: Bearer {token}
 {
   "user": {
     "id": 1,
-    "email": "user@example.com",
-    "firstName": "Jean",
-    "lastName": "Dupont",
-    "dateOfBirth": "1990-01-15",
+    "email": "tidjnjaay@gmail.com",
+    "firstName": "Cheikh-Ahmed-Tidiane",
+    "lastName": "Ndiaye",
+    "dateOfBirth": "1957-07-05",
     "createdAt": "2026-03-29T10:00:00.000Z"
   }
 }
@@ -201,9 +201,9 @@ Authorization: Bearer {token}
 Content-Type: application/json
 
 {
-  "firstName": "Jean-Pierre",
-  "lastName": "Dupont",
-  "dateOfBirth": "1990-01-15"
+  "firstName": "Cheikh-Ahmed-Tidiane",
+  "lastName": "Ndiaye",
+  "dateOfBirth": "1957-05-05"
 }
 ```
 
@@ -214,9 +214,9 @@ Content-Type: application/json
   "user": {
     "id": 1,
     "email": "user@example.com",
-    "firstName": "Jean-Pierre",
-    "lastName": "Dupont",
-    "dateOfBirth": "1990-01-15"
+    "firstName": "Cheikh-Ahmed-Ndiaye",
+    "lastName": "Ndiaye",
+    "dateOfBirth": "1957-07-05"
   }
 }
 ```
