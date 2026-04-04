@@ -213,7 +213,7 @@ Content-Type: application/json
   "message": "Profile updated successfully",
   "user": {
     "id": 1,
-    "email": "user@example.com",
+    "email": "tidjnjaay@gmail.com",
     "firstName": "Cheikh-Ahmed-Ndiaye",
     "lastName": "Ndiaye",
     "dateOfBirth": "1957-07-05"
